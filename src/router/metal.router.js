@@ -16,8 +16,8 @@ const upload = multer({
 
 router.post('/inspect', upload.single('inspect'),(req, res) => {
     res.send({
-        gold: 46,
-        iron: 66
+        gold: 67,
+        iron: 26
     });
 }, (error, req, res, next) => {
     res.status(400).send({error: error.message});
