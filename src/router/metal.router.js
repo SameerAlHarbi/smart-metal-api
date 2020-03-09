@@ -17,31 +17,22 @@ const upload = multer({
 
 const results = [
     {
-        gold: 67,
-        iron: 26
+        metal: 'gold',
+        percentage: 26
     }, {
-        silver: 44,
-        sand: 22
+        metal: 'silver',
+        percentage: 22
     }, {
-        volcano: 80,
-        iron: 26
-    }, {
-        copper: 48,
-        gold: 12
-    }, {
-        basalt: 33,
-        sand: 11
-    }, {
-        quartz: 17,
-        rock: 11
-    }
-]
+        metal: 'sans',
+        percentage: 44
+    }];
 
 router.post('/inspect', upload.single('inspect'),(req, res) => {
     const buffer = sharp(req.file.buffer).resize({ width: 250, height: 250 }).png().toBuffer();
     console.log(req.body);
     console.log(req.body.lat);
-    res.send(results[Math.floor(Math.random() * Math.floor(5))]);
+    // res.send(results[Math.floor(Math.random() * Math.floor(5))]);
+    res.send(results);
 }, (error, req, res, next) => {
     res.status(400).send({error: error.message});
 });
