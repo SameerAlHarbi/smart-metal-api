@@ -4,10 +4,12 @@ const sharp = require('sharp');
 const router = new express.Router();
 
 const upload = multer({
+    // dest: 'images',
     limits: {
         fileSize: 500000
     },
     fileFilter(req, file, cb) {
+        console.log(file.originalname);
         if(!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
             return cb(new Error('Inspect work for images only'));
         }
